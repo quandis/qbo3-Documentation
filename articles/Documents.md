@@ -30,6 +30,8 @@ Power users can create new document templates, choose their mail merge engine, a
 
 When a document is created based on a document template, it can be saved to any document storage location configured in the system. This means you can have QBO produce documents on the QBO servers, and seamlessly deliver them to your FTP site, Amazon S3, Microsoft Azure, etc.
 
+[![Mail Merge Video](https://img.youtube.com/vi/0ysVdPS6b3U/0.jpg)](https://www.youtube.com/watch?v=0ysVdPS6b3U)
+
 ## OCR and Classification
 
 QBO includes an interface for Optical Character Recognition (OCR), which will extract text from common document formats 
