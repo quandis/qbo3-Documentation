@@ -56,6 +56,8 @@ to set the document type, template, status, or other values. For example, in the
 model looks for text specific to loan modifications, subprime mortgage, and mortgage notes, and then leverages a 
 weighted rule set to determine the document type.
 
+![Document Classification](/articles/Document.Classification-450x190.png)
+
 This enables you to purchase a portfolio of loans, drop the collateral documents into QBO, and having a workflow OCR, 
 parses, and classify each document received. Processors would be assigned to review only documents classified as ‘unknown’, 
 instead of putting eyeballs on each and every document, and loans missing key documents can automatically be flagged for follow-up.
