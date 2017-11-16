@@ -64,8 +64,6 @@ This enables you to purchase a portfolio of loans, drop the collateral documents
 parses, and classify each document received. Processors would be assigned to review only documents classified as ‘unknown’, 
 instead of putting eyeballs on each and every document, and loans missing key documents can automatically be flagged for follow-up.
 
-<iframe width="1500" height="844" src="https://www.youtube.com/embed/u5gTKDhC4sM?feature=oembed&amp;wmode=opaque" frameborder="0" allowfullscreen=""></iframe>
-
 ## Mailing Documents
 
 The Document Management module can be used to seamlessly deliver documents to a print-and-mail vendor. 
