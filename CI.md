@@ -18,4 +18,4 @@ Quandis implements continuous integration using some key concepts:
   - a post-launch Powershell script shall change the database connection string to target the database matching the environment tag
   - all other configuration changes are implement by QBO configuration monitoring
 
-![Deployment Diagram](qbo.Deployments.png "Deployment diagram")
+![Deployment Diagram](qbo.Deployments.svg "Deployment diagram")
