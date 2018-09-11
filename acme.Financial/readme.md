@@ -5,6 +5,8 @@ This is a sample solution for extending and wrapping a [Quandis Business Objects
 It comprises:
 
 - **client.Acme.Financial**: sample C# and JS code to communication with QBO.
+  - **client.Acme.Financial.Tests**: xUnit tests for client .netcore code
+- **data.Acme.Financial**: a custom table to include in a QBO install
 - **server.Amce.Financial**: a web project deployed to a QBO server farm that extends QBO.
   - **server.Acme.Financial.Tests**: unit tests for server.Acme.Financial
 
@@ -22,3 +24,6 @@ Dropbox.cs is an IFileObject plugin that allows QBO's document management suite 
 
 AlphaVantage is an IService plugin that retrieve stock market data for a stock market symbol.
 
+### CreditApplication files
+
+These files support the application and web site of the custom CreditApplication table.
