@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ImportCollection>
+	<!-- 
+	This stuff can be done in the front end, but this setup package does it all with the click of a link. 
+	A power user can navigate to Design > Configuration > Packages, and click on "Acme Financial" to load this.
+	-->
+	<ConfigurationEntryCollection>
+
+		<!-- Set up a dropbox credential. The sample here is a free account; limited access! -->
+		<ConfigurationEntryItem>
+			<ConfigurationEntry>Dropbox Credential</ConfigurationEntry>
+			<Source>Credential.config</Source>
+			<ConfigurationType>qbo.Application.Configuration.CredentialCollection</ConfigurationType>
+			<ConfigurationKey>Dropbox</ConfigurationKey>
+			<ConfigurationXml>
+				<Credential Name="Dropbox" UriPrefix="https://dropbox.com/AcmeFinancial" AuthType="Basic" Username="sample" Password="qeFM8pcxMW8AAAAAAAAJLxCTo2h7NdE7ktb775jsyX9MAdPzM3B8I1w-leEq_A5e" Domain="" />
+			</ConfigurationXml>
+		</ConfigurationEntryItem>
+
+		<!-- 
+		Tell QBO what DLL to use when reading or writing from Dropbox.
+		Attachment.ashx/Upload?FileObject=Dropbox&...
+		-->
+		<ConfigurationEntryItem>
+			<ConfigurationEntry>Dropbox FileObject</ConfigurationEntry>
+			<Source>FileObject.config</Source>
+			<ConfigurationType>qbo.Attachment.Configuration.FileObjectCollection</ConfigurationType>
+			<ConfigurationKey>Dropbox</ConfigurationKey>
+			<ConfigurationXml>
+				<FileObject Name="Dropbox" Uri="https://dropbox.com/AcmeFinancial" Type="server.Acme.Financial.Dropbox, server.Acme.Financial" Compression="False" />
+			</ConfigurationXml>
+		</ConfigurationEntryItem>
+
+		<!-- Wire our HelloWorld plugin to Contact/HelloAcme. -->
+		<ConfigurationEntryItem>
+			<ConfigurationEntry>Contact/HelloAcme</ConfigurationEntry>
+			<Source>Contact.config</Source>
+			<ConfigurationType>qbo.Application.Configuration.ServiceCollection</ConfigurationType>
+			<ConfigurationKey>HelloAcme</ConfigurationKey>
+			<ConfigurationXml>
+				<Service Name="HelloAcme" Type="server.Acme.Financial.HelloWorld, server.Acme.Financial, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ReturnType="XmlReader" Async="False" RequireStream="False" CompleteStep="False" LogData="True" Repeatable="OneActive" AllowInheritance="True" />
+			</ConfigurationXml>
+		</ConfigurationEntryItem>
+
+		<!-- Wire our AlphaVantage plugin to Organiztion/StockIntraDay. One plugin, several endpoints. -->
+		<ConfigurationEntryItem>
+			<ConfigurationEntry>Organization/StockIntraDay</ConfigurationEntry>
+			<Source>Organization.config</Source>
+			<ConfigurationType>qbo.Application.Configuration.ServiceCollection</ConfigurationType>
+			<ConfigurationKey>StockIntraDay</ConfigurationKey>
+			<ConfigurationXml>
+				<Service Name="StockIntraDay" Type="server.Acme.Financial.AlphaVantage, server.Acme.Financial, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ReturnType="XmlReader" Async="False" RequireStream="False" CompleteStep="False" LogData="True" Repeatable="OneActive" AllowInheritance="True" />
+			</ConfigurationXml>
+		</ConfigurationEntryItem>
+
+		<!-- Wire our AlphaVantage plugin to Organiztion/StockIntraDay. -->
+		<ConfigurationEntryItem>
+			<ConfigurationEntry>Organization/StockDaily</ConfigurationEntry>
+			<Source>Organization.config</Source>
+			<ConfigurationType>qbo.Application.Configuration.ServiceCollection</ConfigurationType>
+			<ConfigurationKey>StockDaily</ConfigurationKey>
+			<ConfigurationXml>
+				<Service Name="StockDaily" Type="server.Acme.Financial.AlphaVantage, server.Acme.Financial, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ReturnType="XmlReader" Async="False" RequireStream="False" CompleteStep="False" LogData="True" Repeatable="OneActive" AllowInheritance="True" />
+			</ConfigurationXml>
+		</ConfigurationEntryItem>
+
+		<!-- Wire our AlphaVantage plugin to Organiztion/StockQuote. Now I'm just getting lazy, and letting the plugin return it's default method. -->
+		<ConfigurationEntryItem>
+			<ConfigurationEntry>Organization/StockQuote</ConfigurationEntry>
+			<Source>Organization.config</Source>
+			<ConfigurationType>qbo.Application.Configuration.ServiceCollection</ConfigurationType>
+			<ConfigurationKey>StockQuote</ConfigurationKey>
+			<ConfigurationXml>
+				<Service Name="StockQuote" Type="server.Acme.Financial.AlphaVantage, server.Acme.Financial, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ReturnType="XmlReader" Async="False" RequireStream="False" CompleteStep="False" LogData="True" Repeatable="OneActive" AllowInheritance="True" />
+			</ConfigurationXml>
+		</ConfigurationEntryItem>
+
+	</ConfigurationEntryCollection>
+</ImportCollection>

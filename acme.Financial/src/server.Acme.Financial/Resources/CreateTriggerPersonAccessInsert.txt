@@ -1,0 +1,21 @@
+﻿IF (OBJECT_ID('PersonAccessInsert') IS NULL) 
+	EXEC('CREATE TRIGGER [dbo].[PersonAccessInsert] ON [dbo].[Person] AFTER INSERT AS SELECT 1')
+GO
+
+ALTER TRIGGER [dbo].[PersonAccessInsert] ON [dbo].[Person] AFTER INSERT
+
+AS
+
+INSERT INTO PersonAccess (
+	PersonID, 
+	GroupObject, 
+	GroupObjectID, 
+	SourceObject, 
+	SourceObjectID
+)
+SELECT	PersonID, 
+		'Person', 
+		PersonID, 
+		'Person', 
+		PersonID 
+FROM	Inserted

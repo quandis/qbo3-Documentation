@@ -1,0 +1,103 @@
+﻿IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID('[dbo].[BusinessRule]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+	CREATE TABLE [dbo].[BusinessRule] (
+		[BusinessRuleID] int IDENTITY(1,1) NOT NULL,
+		[BusinessRule] nvarchar(50) NOT NULL,
+		[BusinessRuleType] nvarchar(50) NULL,
+		[Status] nvarchar(50) NULL,
+		[ClassName] nvarchar(50) NULL,
+		[Operation] nvarchar(50) NULL,
+		[Parameters] nvarchar(max) NULL,
+		[ValidatorPlugin] nvarchar(50) NULL,
+		[ValidatorID] int NULL,
+		[SetProperties] bit NULL,
+		[ActiveStart] datetime NULL,
+		[ActiveEnd] datetime NULL,
+		[CreatedPersonID] int NULL,
+		[CreatedDate] datetime NULL,
+		[UpdatedPersonID] int NULL,
+		[UpdatedDate] datetime NULL
+		CONSTRAINT [PK_BusinessRule] PRIMARY KEY CLUSTERED ( [BusinessRuleID] ASC )
+	) ON [FGData]
+END ELSE BEGIN
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[BusinessRule]') AND name = 'BusinessRuleID')
+		ALTER TABLE BusinessRule ADD BusinessRuleID int NOT NULL
+	ELSE 
+		ALTER TABLE BusinessRule ALTER COLUMN BusinessRuleID int NOT NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[BusinessRule]') AND name = 'BusinessRule')
+		ALTER TABLE BusinessRule ADD BusinessRule nvarchar(50) NOT NULL
+	ELSE 
+		ALTER TABLE BusinessRule ALTER COLUMN BusinessRule nvarchar(50) NOT NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[BusinessRule]') AND name = 'BusinessRuleType')
+		ALTER TABLE BusinessRule ADD BusinessRuleType nvarchar(50) NULL
+	ELSE 
+		ALTER TABLE BusinessRule ALTER COLUMN BusinessRuleType nvarchar(50) NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[BusinessRule]') AND name = 'Status')
+		ALTER TABLE BusinessRule ADD Status nvarchar(50) NULL
+	ELSE 
+		ALTER TABLE BusinessRule ALTER COLUMN Status nvarchar(50) NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[BusinessRule]') AND name = 'ClassName')
+		ALTER TABLE BusinessRule ADD ClassName nvarchar(50) NULL
+	ELSE 
+		ALTER TABLE BusinessRule ALTER COLUMN ClassName nvarchar(50) NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[BusinessRule]') AND name = 'Operation')
+		ALTER TABLE BusinessRule ADD Operation nvarchar(50) NULL
+	ELSE 
+		ALTER TABLE BusinessRule ALTER COLUMN Operation nvarchar(50) NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[BusinessRule]') AND name = 'Parameters')
+		ALTER TABLE BusinessRule ADD Parameters nvarchar(max) NULL
+	ELSE 
+		ALTER TABLE BusinessRule ALTER COLUMN Parameters nvarchar(max) NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[BusinessRule]') AND name = 'ValidatorPlugin')
+		ALTER TABLE BusinessRule ADD ValidatorPlugin nvarchar(50) NULL
+	ELSE 
+		ALTER TABLE BusinessRule ALTER COLUMN ValidatorPlugin nvarchar(50) NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[BusinessRule]') AND name = 'ValidatorID')
+		ALTER TABLE BusinessRule ADD ValidatorID int NULL
+	ELSE 
+		ALTER TABLE BusinessRule ALTER COLUMN ValidatorID int NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[BusinessRule]') AND name = 'SetProperties')
+		ALTER TABLE BusinessRule ADD SetProperties bit NULL
+	ELSE 
+		ALTER TABLE BusinessRule ALTER COLUMN SetProperties bit NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[BusinessRule]') AND name = 'ActiveStart')
+		ALTER TABLE BusinessRule ADD ActiveStart datetime NULL
+	ELSE 
+		ALTER TABLE BusinessRule ALTER COLUMN ActiveStart datetime NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[BusinessRule]') AND name = 'ActiveEnd')
+		ALTER TABLE BusinessRule ADD ActiveEnd datetime NULL
+	ELSE 
+		ALTER TABLE BusinessRule ALTER COLUMN ActiveEnd datetime NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[BusinessRule]') AND name = 'CreatedPersonID')
+		ALTER TABLE BusinessRule ADD CreatedPersonID int NULL
+	ELSE 
+		ALTER TABLE BusinessRule ALTER COLUMN CreatedPersonID int NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[BusinessRule]') AND name = 'CreatedDate')
+		ALTER TABLE BusinessRule ADD CreatedDate datetime NULL
+	ELSE 
+		ALTER TABLE BusinessRule ALTER COLUMN CreatedDate datetime NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[BusinessRule]') AND name = 'UpdatedPersonID')
+		ALTER TABLE BusinessRule ADD UpdatedPersonID int NULL
+	ELSE 
+		ALTER TABLE BusinessRule ALTER COLUMN UpdatedPersonID int NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[BusinessRule]') AND name = 'UpdatedDate')
+		ALTER TABLE BusinessRule ADD UpdatedDate datetime NULL
+	ELSE 
+		ALTER TABLE BusinessRule ALTER COLUMN UpdatedDate datetime NULL
+END

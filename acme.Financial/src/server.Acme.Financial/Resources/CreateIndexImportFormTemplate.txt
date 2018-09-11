@@ -1,0 +1,6 @@
+﻿IF NOT EXISTS(SELECT 1 
+                FROM SYS.INDEXES 
+               WHERE object_id = OBJECT_ID(N'[dbo].[ImportFormTemplate]')
+                 AND index_id = INDEXPROPERTY(OBJECT_ID(N'[dbo].[ImportFormTemplate]'), 'IU_ImportFormTemplate_ImportFormTemplate' , 'IndexID'))
+	CREATE UNIQUE NONCLUSTERED INDEX IU_ImportFormTemplate_ImportFormTemplate ON dbo.ImportFormTemplate
+		   (ImportFormTemplate) WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = ON, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [FGIndex]
