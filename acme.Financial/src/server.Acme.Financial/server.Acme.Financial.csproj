@@ -131,38 +131,41 @@
       <HintPath>..\..\packages\qbo3.Core.EnterpriseLibrary.5.0.0\lib\net40\Microsoft.Practices.Unity.Interception.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="qbo.Accounting, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\qbo3.Accounting.3.0.0\lib\net461\qbo.Accounting.dll</HintPath>
+      <HintPath>..\..\packages\qbo3.Accounting.3.0.1\lib\net461\qbo.Accounting.dll</HintPath>
     </Reference>
-    <Reference Include="qbo.Application">
-      <HintPath>..\..\packages\qbo3.Application.3.0.0\lib\net461\qbo.Application.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="qbo.Application, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\qbo3.Application.3.0.1\lib\net461\qbo.Application.dll</HintPath>
     </Reference>
     <Reference Include="qbo.Attachment, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\qbo3.Attachment.3.0.0\lib\net461\qbo.Attachment.dll</HintPath>
+      <HintPath>..\..\packages\qbo3.Attachment.3.0.1\lib\net461\qbo.Attachment.dll</HintPath>
     </Reference>
     <Reference Include="qbo.Contact, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\qbo3.Contact.3.0.0\lib\net461\qbo.Contact.dll</HintPath>
+      <HintPath>..\..\packages\qbo3.Contact.3.0.1\lib\net461\qbo.Contact.dll</HintPath>
     </Reference>
     <Reference Include="qbo.Decision, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\qbo3.Decision.3.0.0\lib\net461\qbo.Decision.dll</HintPath>
+      <HintPath>..\..\packages\qbo3.Decision.3.0.1\lib\net461\qbo.Decision.dll</HintPath>
     </Reference>
-    <Reference Include="qbo.Exception">
-      <HintPath>..\..\packages\qbo3.Exception.3.0.0\lib\net461\qbo.Exception.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="qbo.Exception, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\qbo3.Exception.3.0.1\lib\net461\qbo.Exception.dll</HintPath>
+    </Reference>
+    <Reference Include="qbo.Import, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\qbo3.Import.3.0.1\lib\net461\qbo.Import.dll</HintPath>
+    </Reference>
+    <Reference Include="qbo.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\qbo3.Logging.3.0.1\lib\net461\qbo.Logging.dll</HintPath>
     </Reference>
     <Reference Include="qbo.Message, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\qbo3.Message.3.0.0\lib\net461\qbo.Message.dll</HintPath>
+      <HintPath>..\..\packages\qbo3.Message.3.0.1\lib\net461\qbo.Message.dll</HintPath>
     </Reference>
     <Reference Include="qbo.Process, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\qbo3.Process.3.0.0\lib\net461\qbo.Process.dll</HintPath>
+      <HintPath>..\..\packages\qbo3.Process.3.0.1\lib\net461\qbo.Process.dll</HintPath>
     </Reference>
     <Reference Include="qbo.Security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\qbo3.Security.3.0.0\lib\net461\qbo.Security.dll</HintPath>
+      <HintPath>..\..\packages\qbo3.Security.3.0.1\lib\net461\qbo.Security.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
@@ -184,6 +187,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Acme\CreditApplication.ashx" />
+    <Content Include="Resources\CreateIndexImportFormTemplate.txt" />
+    <Content Include="Resources\CreateTableBusinessRule.txt" />
+    <Content Include="Resources\CreateTableImportFileMap.txt" />
+    <Content Include="Resources\CreateTriggerPersonAccessInsert.txt" />
     <Content Include="Scripts\server.Acme.Financial.js" />
     <Content Include="Templates\Acme\CreditApplication.Dashboard.xslt" />
     <Content Include="Templates\Acme\CreditApplication.Edit.xslt" />
@@ -193,7 +200,6 @@
     <Content Include="Templates\Acme\CreditApplication.Select.xslt" />
     <Content Include="Templates\Acme\CreditApplication.Summary.xslt" />
     <None Include="packages.config" />
-    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -207,9 +213,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\Setup.AcmeFinancial.xml" />
-    <Content Include="Resources\CreateIndexImportFormTemplate.txt" />
-    <Content Include="Resources\CreateTableBusinessRule.txt" />
-    <Content Include="Resources\CreateTriggerPersonAccessInsert.txt" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +235,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="PublicDataImport.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

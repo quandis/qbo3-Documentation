@@ -1,0 +1,79 @@
+﻿IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID('[dbo].[ImportFileMap]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+	CREATE TABLE [dbo].[ImportFileMap] (
+		[ImportFileMapID] bigint IDENTITY(1,1) NOT NULL,
+		[ImportFileMap] nvarchar(50) NOT NULL,
+		[ImportFileTemplateID] int NOT NULL,
+		[Status] nvarchar(50) NULL,
+		[ImportFileMapType] nvarchar(50) NULL,
+		[Destination] nvarchar(100) NULL,
+		[Required] bit NULL,
+		[IsText] bit NULL,
+		[CreatedPersonID] int NULL,
+		[CreatedDate] datetime NULL,
+		[UpdatedPersonID] int NULL,
+		[UpdatedDate] datetime NULL
+		CONSTRAINT [PK_ImportFileMap] PRIMARY KEY CLUSTERED ( [ImportFileMapID] ASC )
+	) ON [FGData]
+END ELSE BEGIN
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[ImportFileMap]') AND name = 'ImportFileMapID')
+		ALTER TABLE ImportFileMap ADD ImportFileMapID bigint NOT NULL
+	ELSE 
+		ALTER TABLE ImportFileMap ALTER COLUMN ImportFileMapID bigint NOT NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[ImportFileMap]') AND name = 'ImportFileMap')
+		ALTER TABLE ImportFileMap ADD ImportFileMap nvarchar(50) NOT NULL
+	ELSE 
+		ALTER TABLE ImportFileMap ALTER COLUMN ImportFileMap nvarchar(50) NOT NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[ImportFileMap]') AND name = 'ImportFileTemplateID')
+		ALTER TABLE ImportFileMap ADD ImportFileTemplateID int NOT NULL
+	ELSE 
+		ALTER TABLE ImportFileMap ALTER COLUMN ImportFileTemplateID int NOT NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[ImportFileMap]') AND name = 'Status')
+		ALTER TABLE ImportFileMap ADD Status nvarchar(50) NULL
+	ELSE 
+		ALTER TABLE ImportFileMap ALTER COLUMN Status nvarchar(50) NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[ImportFileMap]') AND name = 'ImportFileMapType')
+		ALTER TABLE ImportFileMap ADD ImportFileMapType nvarchar(50) NULL
+	ELSE 
+		ALTER TABLE ImportFileMap ALTER COLUMN ImportFileMapType nvarchar(50) NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[ImportFileMap]') AND name = 'Destination')
+		ALTER TABLE ImportFileMap ADD Destination nvarchar(100) NULL
+	ELSE 
+		ALTER TABLE ImportFileMap ALTER COLUMN Destination nvarchar(100) NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[ImportFileMap]') AND name = 'Required')
+		ALTER TABLE ImportFileMap ADD Required bit NULL
+	ELSE 
+		ALTER TABLE ImportFileMap ALTER COLUMN Required bit NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[ImportFileMap]') AND name = 'IsText')
+		ALTER TABLE ImportFileMap ADD IsText bit NULL
+	ELSE 
+		ALTER TABLE ImportFileMap ALTER COLUMN IsText bit NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[ImportFileMap]') AND name = 'CreatedPersonID')
+		ALTER TABLE ImportFileMap ADD CreatedPersonID int NULL
+	ELSE 
+		ALTER TABLE ImportFileMap ALTER COLUMN CreatedPersonID int NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[ImportFileMap]') AND name = 'CreatedDate')
+		ALTER TABLE ImportFileMap ADD CreatedDate datetime NULL
+	ELSE 
+		ALTER TABLE ImportFileMap ALTER COLUMN CreatedDate datetime NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[ImportFileMap]') AND name = 'UpdatedPersonID')
+		ALTER TABLE ImportFileMap ADD UpdatedPersonID int NULL
+	ELSE 
+		ALTER TABLE ImportFileMap ALTER COLUMN UpdatedPersonID int NULL
+
+	IF NOT EXISTS (SELECT name FROM syscolumns WHERE id = object_id('[dbo].[ImportFileMap]') AND name = 'UpdatedDate')
+		ALTER TABLE ImportFileMap ADD UpdatedDate datetime NULL
+	ELSE 
+		ALTER TABLE ImportFileMap ALTER COLUMN UpdatedDate datetime NULL
+END
