@@ -56,8 +56,8 @@ namespace server.Acme.Financial
                 // Set up an OldDbConnection to the Excel spreadsheet
                 var sourceConnection = $"Provider=Microsoft.ACE.OLEDB.12.0;Extended Properties=\"Excel 12.0;HRD=Yes;IMEX=1\";Data Source={scratchpad}";
 
-                // determine the connection string to the target SqlServer; in this case, we'll just used the default QBO database
-                var targetConnection = ConfigurationManager.ConnectionStrings["qbo.Default"];
+                // determine the connection string to the target SqlServer; in this case, assume we have a DataWarehouse connection.
+                var targetConnection = ConfigurationManager.ConnectionStrings["DataWarehouse"];
                 using (OleDbConnection _Connection = new OleDbConnection(sourceConnection))
                 {
                     // Wire a command to select data from the spreadsheet.
@@ -65,8 +65,12 @@ namespace server.Acme.Financial
                     var command = new OleDbCommand("SELECT * FROM [fmr19_info]", _Connection);
                     using (var reader = await command.ExecuteReaderAsync())
                     {
+                        // Use BCP under the hood - it's FAST!
                         SqlBulkCopy bulkCopy = new SqlBulkCopy(targetConnection.ConnectionString, SqlBulkCopyOptions.TableLock);
+
+                        // Assume we have a schema called 'hud' with a table called 'FairMarketRentValue'.
                         bulkCopy.DestinationTableName = "[hud].[FairMarketRentValue]";
+
                         bulkCopy.WriteToServer(reader);
                     }
                 }
