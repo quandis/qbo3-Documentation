@@ -4,7 +4,7 @@ This is a sample solution for extending and wrapping a [Quandis Business Objects
 
 It comprises:
 
-- **client.Acme.Financial**: sample C# and JS code to communication with QBO.
+- **client.Acme.Financial**: sample C# and JS code to communicate with QBO.
   - **client.Acme.Financial.Tests**: xUnit tests for client .netcore code
 - **data.Acme.Financial**: a custom table to include in a QBO install
 - **server.Amce.Financial**: a web project deployed to a QBO server farm that extends QBO.
