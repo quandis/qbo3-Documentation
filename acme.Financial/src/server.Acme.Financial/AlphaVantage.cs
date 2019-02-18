@@ -77,11 +77,7 @@ namespace server.Acme.Financial
 						using (var reader = new StreamReader(stream))
 						{
 							var json = await reader.ReadToEndAsync();
-							// Consider cleaning up their JSON here - lots of spaces.
-
-							// Convert to XmlReader
-							var xml = JsonConvert.DeserializeXNode(json);
-							result.Response = xml.CreateReader();
+                            result.Response = new JsonTextReader(new StringReader(json));
 							result.Success = true;
 						}
 					}
