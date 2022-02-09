@@ -66,23 +66,23 @@ namespace server.Acme.Financial
 
 			var result = new ServiceResult();
 
-			var request = WebRequest.Create(url);
+	var request = WebRequest.Create(url);
 
-			try
+	try
+	{
+		using (var response = await request.GetResponseAsync())
+		{
+			using (var stream = response.GetResponseStream())
 			{
-				using (var response = await request.GetResponseAsync())
+				using (var reader = new StreamReader(stream))
 				{
-					using (var stream = response.GetResponseStream())
-					{
-						using (var reader = new StreamReader(stream))
-						{
-							var json = await reader.ReadToEndAsync();
-                            result.Response = new JsonTextReader(new StringReader(json));
-							result.Success = true;
-						}
-					}
+					var json = await reader.ReadToEndAsync();
+	    result.Response = new JsonTextReader(new StringReader(json));
+					result.Success = true;
 				}
 			}
+		}
+	}
 			catch (System.Exception ex)
 			{
 				result.Success = false;
